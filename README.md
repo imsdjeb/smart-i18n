@@ -127,9 +127,6 @@ All fields are optional — the plugin auto-detects sensible defaults. The confi
 | Nuxt | @nuxtjs/i18n | JSON |
 | Django | gettext (built-in) | PO |
 | Rails | rails-i18n | YAML |
-| Spring Boot | MessageSource | Properties |
-| Go | go-i18n | JSON, TOML |
-| .NET | Resource files | RESX |
 
 ---
 

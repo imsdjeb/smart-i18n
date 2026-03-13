@@ -215,6 +215,17 @@ run_locale_test  "yaml-locales"         "rails"      "rails-i18n"           "yam
 run_locale_test  "flutter-arb"          "flutter"    "flutter_localizations" "arb locales"                 "en"
 
 echo ""
+echo "  -- Framework Overlap -------------------------"
+
+# Next.js has react in deps — must detect as nextjs, not react
+run_test         "nextjs-react-overlap"   "nextjs"     "next-intl"            "json"       "nextjs > react"
+run_locale_test  "nextjs-react-overlap"   "nextjs"     "next-intl"            "nextjs overlap locales"       "en"
+
+# Nuxt has vue in deps — must detect as nuxt, not vue
+run_test         "nuxt-vue-overlap"       "nuxt"       "@nuxtjs/i18n"         "json"       "nuxt > vue"
+run_locale_test  "nuxt-vue-overlap"       "nuxt"       "@nuxtjs/i18n"         "nuxt overlap locales"         "en"
+
+echo ""
 echo "  -- Config Detection --------------------------"
 
 run_test         "smart-i18n-config"    "react"      "react-i18next"        "json"       "has .smart-i18n.json" "hasConfig=true sourceLocale=fr"

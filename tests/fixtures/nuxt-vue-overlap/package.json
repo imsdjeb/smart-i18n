@@ -1,0 +1,11 @@
+{
+  "name": "nuxt-vue-overlap",
+  "dependencies": {
+    "vue": "^3.3.0",
+    "vue-i18n": "^9.0.0",
+    "@nuxtjs/i18n": "^8.0.0"
+  },
+  "devDependencies": {
+    "nuxt": "^3.8.0"
+  }
+}
