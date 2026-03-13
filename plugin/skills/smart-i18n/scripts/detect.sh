@@ -117,7 +117,7 @@ elif [ -f "angular.json" ]; then
   fi
 
 # --- Next.js ---
-elif ls next.config.* 1>/dev/null 2>&1; then
+elif [ -f "next.config.js" ] || [ -f "next.config.ts" ] || [ -f "next.config.mjs" ] || [ -f "next.config.cjs" ] || [ -f "next.config.mts" ]; then
   FRAMEWORK="nextjs"
 
   if pkg_has_dep "next-intl"; then
@@ -139,14 +139,14 @@ elif ls next.config.* 1>/dev/null 2>&1; then
   fi
 
 # --- Nuxt ---
-elif ls nuxt.config.* 1>/dev/null 2>&1; then
+elif [ -f "nuxt.config.js" ] || [ -f "nuxt.config.ts" ] || [ -f "nuxt.config.mjs" ] || [ -f "nuxt.config.cjs" ] || [ -f "nuxt.config.mts" ]; then
   FRAMEWORK="nuxt"
   I18N_LIBRARY="@nuxtjs/i18n"
   LOCALES_DIR="locales"
   CODE_PATTERN="\$t('key')"
 
 # --- Svelte ---
-elif ls svelte.config.* 1>/dev/null 2>&1; then
+elif [ -f "svelte.config.js" ] || [ -f "svelte.config.ts" ] || [ -f "svelte.config.mjs" ] || [ -f "svelte.config.cjs" ] || [ -f "svelte.config.mts" ]; then
   FRAMEWORK="svelte"
 
   if pkg_has_dep "paraglide-js"; then
@@ -197,7 +197,8 @@ elif pkg_has_dep "react"; then
   fi
 
 # --- Django ---
-elif [ -f "manage.py" ]; then
+# Verify manage.py is actually Django (Flask-Script also creates manage.py)
+elif [ -f "manage.py" ] && grep -qE "DJANGO_SETTINGS_MODULE|django" manage.py 2>/dev/null; then
   FRAMEWORK="django"
   I18N_LIBRARY="gettext"
   LOCALES_DIR="locale"
