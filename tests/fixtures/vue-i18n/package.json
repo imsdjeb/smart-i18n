@@ -1,0 +1,7 @@
+{
+  "name": "test-vue-i18n",
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-i18n": "^9.8.0"
+  }
+}

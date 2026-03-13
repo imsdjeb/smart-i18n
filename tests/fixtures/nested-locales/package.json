@@ -1,0 +1,7 @@
+{
+  "name": "test-nested-locales",
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-i18n": "^9.8.0"
+  }
+}

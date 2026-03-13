@@ -1,0 +1,8 @@
+{
+  "name": "test-react-intl",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intl": "^6.6.0"
+  }
+}

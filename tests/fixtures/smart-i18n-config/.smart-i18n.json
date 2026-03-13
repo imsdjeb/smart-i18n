@@ -1,0 +1,7 @@
+{
+  "sourceLocale": "fr",
+  "targetLocales": ["en", "es", "de"],
+  "keyStyle": "nested",
+  "keyNaming": "camelCase",
+  "translationTone": "formal"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "test-angular-transloco",
+  "dependencies": {
+    "@angular/core": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@ngneat/transloco": "^6.0.0"
+  }
+}

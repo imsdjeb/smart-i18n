@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "welcomeMessage": "Welcome, {name}!",
+  "@welcomeMessage": {
+    "description": "Greeting on the home screen",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "John"
+      }
+    }
+  },
+  "save": "Save"
+}
