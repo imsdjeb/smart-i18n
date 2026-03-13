@@ -19,7 +19,11 @@ It works the same whether you're on a React app, a Flutter project, a Django bac
 ## Install
 
 ```bash
-claude plugin install smart-i18n
+# Add the marketplace (one-time)
+claude plugin marketplace add imsdjeb/smart-i18n
+
+# Install the plugin
+claude plugin install smart-i18n@imsdjeb
 ```
 
 That's it. No config needed — the plugin auto-detects everything.
