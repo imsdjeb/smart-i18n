@@ -205,7 +205,7 @@ elif [ -f "manage.py" ]; then
   CODE_PATTERN="_(\"key\")"
 
 # --- Rails ---
-elif [ -f "Gemfile" ] && grep -q "rails" Gemfile 2>/dev/null; then
+elif [ -f "Gemfile" ] && grep -qE "gem ['\"]rails['\"]" Gemfile 2>/dev/null; then
   FRAMEWORK="rails"
   I18N_LIBRARY="rails-i18n"
   LOCALES_DIR="config/locales"
@@ -214,8 +214,10 @@ elif [ -f "Gemfile" ] && grep -q "rails" Gemfile 2>/dev/null; then
 fi
 
 # --- Detect existing locales ---
-# Locale regex: matches en, en-US, en_US, zh-Hans, zh-Hant, por, zho, etc.
-LOCALE_REGEX='[a-zA-Z]{2,3}([_-][a-zA-Z]{2,4})?'
+# Locale regex: matches en, en-US, en_US, zh-Hans, zh-Hant, pt_BR, etc.
+# Enforces lowercase language code (2-3 chars) + optional region/script (uppercase start)
+# This avoids false positives on common directory/file names like src, app, lib, css, api
+LOCALE_REGEX='[a-z]{2,3}([_-][A-Za-z]{2,4})?'
 
 if [ -n "$LOCALES_DIR" ] && [ -d "$LOCALES_DIR" ]; then
   LOCALE_FILES=""
