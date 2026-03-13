@@ -1,0 +1,10 @@
+{
+  "name": "smart-i18n",
+  "description": "Zero-config, framework-agnostic internationalization for your entire codebase. Auto-detects your stack, extracts hardcoded strings, generates semantic keys, translates with context, syncs locales, and guards commits. Supports Angular, React, Vue, Next.js, Flutter, and more.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Imad"
+  },
+  "license": "MIT",
+  "keywords": ["i18n", "internationalization", "localization", "translation", "l10n", "multilingual"]
+}
