@@ -214,10 +214,10 @@ elif [ -f "Gemfile" ] && grep -qE "gem ['\"]rails['\"]" Gemfile 2>/dev/null; the
 fi
 
 # --- Detect existing locales ---
-# Locale regex: matches en, en-US, en_US, zh-Hans, zh-Hant, pt_BR, etc.
-# Enforces lowercase language code (2-3 chars) + optional region/script (uppercase start)
-# This avoids false positives on common directory/file names like src, app, lib, css, api
-LOCALE_REGEX='[a-z]{2,3}([_-][A-Za-z]{2,4})?'
+# Locale regex: 2-letter ISO 639-1 code + optional region/script suffix
+# Only 2-letter codes to avoid false positives on common names (app, nav, src, lib, css, api)
+# Matches: en, fr, de, ja, en_US, pt_BR, zh-Hans, zh-Hant
+LOCALE_REGEX='[a-z]{2}([_-][A-Za-z]{2,4})?'
 
 if [ -n "$LOCALES_DIR" ] && [ -d "$LOCALES_DIR" ]; then
   LOCALE_FILES=""

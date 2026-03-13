@@ -238,6 +238,27 @@ run_test         "yaml-locales"         "rails"      "rails-i18n"           "yam
 run_test         "flutter-arb"          "flutter"    "flutter_localizations" "arb"       "flutter (no lock)"    "packageManager=unknown"
 
 echo ""
+echo "  -- Regression Tests --------------------------"
+
+# Regression: files like app.json, nav.json in locales dir must NOT be detected as locales
+run_locale_test  "non-locale-filenames"  "react"      "react-i18next"        "no false-positive locales"    "en"
+
+# Also verify the locale count is exactly 1 (only "en", not "app" or "nav")
+TOTAL=$((TOTAL + 1))
+_nlf_output=$(cd "$FIXTURES_DIR/non-locale-filenames" && bash "$DETECT_SCRIPT" 2>/dev/null)
+_nlf_count=$(echo "$_nlf_output" | jq '.existingLocales | length')
+if [ "$_nlf_count" -eq 1 ]; then
+  printf "  PASS %-30s localeCount=%s\n" "locale count == 1:" "$_nlf_count"
+  PASS_COUNT=$((PASS_COUNT + 1))
+else
+  printf "  FAIL %-30s expected 1 locale, got %s (%s)\n" "locale count == 1:" "$_nlf_count" "$(echo "$_nlf_output" | jq -c '.existingLocales')"
+  FAIL_COUNT=$((FAIL_COUNT + 1))
+fi
+
+# Regression: gem "guardrails" must NOT trigger Rails detection
+run_test         "guardrails-gem"       "react"      "unknown"              "json"       "guardrails != rails"
+
+echo ""
 echo "  =============================================="
 echo "  Results: $PASS_COUNT/$TOTAL passed"
 
